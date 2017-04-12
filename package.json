@@ -1,10 +1,11 @@
 {
   "name": "egg-rest-query",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "parsing rest query",
   "eggPlugin": {
     "name": "rest-query"
   },
+  "main": "./interface.js",
   "keywords": [
     "egg",
     "eggPlugin",
