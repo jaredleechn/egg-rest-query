@@ -2,6 +2,8 @@
 
 const request = require('supertest');
 const mm = require('egg-mock');
+const assert = require('assert');
+const Query = require('../lib/Query');
 
 describe('test/rest-query.test.js', () => {
   let app;
@@ -30,5 +32,19 @@ describe('test/rest-query.test.js', () => {
         },
         sort: [ 'createdAt' ],
       });
+  });
+
+  it('mongo', () => {
+    const query = new Query({
+      filter: "productName eq basement and createdAt gt datetimeoffset'2017-03-28T16:40:09.724Z' and startswith(name, 'base')",
+      fields: 'a,b',
+      sort: 'b,-a',
+    });
+
+    const { mongoFilter, mongoFields, mongoSort } = query;
+    assert(Array.isArray(mongoFilter.$and));
+    assert(mongoFilter.$and[1].$and.length === 2);
+    assert(mongoFields === 'a,b');
+    assert(mongoSort === 'b,-a');
   });
 });

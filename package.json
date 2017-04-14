@@ -1,6 +1,6 @@
 {
   "name": "egg-rest-query",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "parsing odata style query into mongoDB condition",
   "eggPlugin": {
     "name": "rest-query"

@@ -28,7 +28,7 @@ request: /api/product?fields=name&sort=createdAt&filter=productName eq basement 
 
 patch parsing result into `ctx.extendQuery` with values:
 
-```
+```js
 {
   mongoFilter: {
     $and: [{
@@ -36,16 +36,31 @@ patch parsing result into `ctx.extendQuery` with values:
         $eq: 'basement',
       },
     }, {
-      createdAt: {
-        $gt: { __type: 'date', iso: '2017-03-28T16:40:09.724Z' },
-      },
-    }, {
-      name: /^base/i,
+      $and: [{
+        createdAt: {
+          $gt: { __type : 'date', iso: '2017-03-28T16:40:09.724Z' },
+        },
+      }, {
+        name: /^base/i,
+      }],
     }],
   },
   mongoSort: 'createdAt',
   mongoFields: 'name',
 }
+```
+
+and query in mongoDB
+
+```js
+const { mongoFilter, mongoSort, mongoFields, skip, top } = ctx.extendQuery;
+this.db.class('product').find({
+  where: mongoFilter,
+  sort: mongoSort,
+  fields: mongoFields,
+  skip,
+  top,
+});
 ```
 
 more filter supported like startswith, endswith, substringof, view [odata-parser](https://github.com/auth0/node-odata-parser/blob/master/test/parser.specs.js)
