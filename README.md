@@ -9,12 +9,12 @@
 
 [npm-image]: https://img.shields.io/npm/v/egg-rest-query.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-rest-query
-[travis-image]: https://img.shields.io/travis/eggjs/egg-rest-query.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eggjs/egg-rest-query
-[codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-rest-query.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/eggjs/egg-rest-query?branch=master
-[david-image]: https://img.shields.io/david/eggjs/egg-rest-query.svg?style=flat-square
-[david-url]: https://david-dm.org/eggjs/egg-rest-query
+[travis-image]: https://img.shields.io/travis/jaredleechn/egg-rest-query.svg?style=flat-square
+[travis-url]: https://travis-ci.org/jaredleechn/egg-rest-query
+[codecov-image]: https://img.shields.io/codecov/c/github/jaredleechn/egg-rest-query.svg?style=flat-square
+[codecov-url]: https://codecov.io/github/jaredleechn/egg-rest-query?branch=master
+[david-image]: https://img.shields.io/david/jaredleechn/egg-rest-query.svg?style=flat-square
+[david-url]: https://david-dm.org/jaredleechn/egg-rest-query
 [snyk-image]: https://snyk.io/test/npm/egg-rest-query/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/egg-rest-query
 [download-image]: https://img.shields.io/npm/dm/egg-rest-query.svg?style=flat-square
