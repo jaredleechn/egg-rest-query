@@ -1,7 +1,7 @@
 {
   "name": "egg-rest-query",
-  "version": "0.0.3",
-  "description": "parsing rest query",
+  "version": "0.0.4",
+  "description": "parsing odata style query into mongoDB condition",
   "eggPlugin": {
     "name": "rest-query"
   },
@@ -50,12 +50,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggjs/egg-rest-query.git"
+    "url": "git+https://github.com/jaredleechn/egg-rest-query.git"
   },
   "bugs": {
-    "url": "https://github.com/eggjs/egg/issues"
+    "url": "https://github.com/jaredleechn/egg/issues"
   },
-  "homepage": "https://github.com/eggjs/egg-rest-query#readme",
+  "homepage": "https://github.com/jaredleechn/egg-rest-query#readme",
   "author": "",
   "license": "MIT"
 }

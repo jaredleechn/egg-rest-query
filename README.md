@@ -20,9 +20,35 @@
 [download-image]: https://img.shields.io/npm/dm/egg-rest-query.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-rest-query
 
-<!--
-Description here.
--->
+parsing request query into usable db condition for mongoDB etc...
+
+```
+request: /api/product?fields=name&sort=createdAt&filter=productName eq basement and createdAt gt datetimeoffset'2017-03-28T16:40:09.724Z' and startswith(name, 'base')
+```
+
+patch parsing result into `ctx.extendQuery` with values:
+
+```
+{
+  mongoFilter: {
+    $and: [{
+      productName: {
+        $eq: 'basement',
+      },
+    }, {
+      createdAt: {
+        $gt: { __type: 'date', iso: '2017-03-28T16:40:09.724Z' },
+      },
+    }, {
+      name: /^base/i,
+    }],
+  },
+  mongoSort: 'createdAt',
+  mongoFields: 'name',
+}
+```
+
+more filter supported like startswith, endswith, substringof, view [odata-parser](https://github.com/auth0/node-odata-parser/blob/master/test/parser.specs.js)
 
 ## Install
 
@@ -34,17 +60,19 @@ $ npm i egg-rest-query --save
 
 ```js
 // {app_root}/config/plugin.js
-exports.rest-query = {
+exports['rest-query'] = {
   enable: true,
   package: 'egg-rest-query',
 };
 ```
 
+then `extendQuery` with be available on `ctx`
+
 ## Configuration
 
 ```js
 // {app_root}/config/config.default.js
-exports.rest-query = {
+exports['rest-query'] = {
 };
 ```
 
