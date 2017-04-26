@@ -53,13 +53,14 @@ patch parsing result into `ctx.extendQuery` with values:
 and query in mongoDB
 
 ```js
-const { mongoFilter, mongoSort, mongoFields, skip, top } = ctx.extendQuery;
+const { mongoFilter, mongoSort, mongoFields, mongoInclude, skip, top } = ctx.extendQuery;
 this.db.class('product').find({
   where: mongoFilter,
   sort: mongoSort,
   fields: mongoFields,
   skip,
   top,
+  include: mongoInclude,
 });
 ```
 

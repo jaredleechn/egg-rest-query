@@ -25,6 +25,7 @@ describe('test/rest-query.test.js', () => {
         skip: 0,
         limit: 10,
         search: 'jared',
+        expand: [],
         filter: {
           type: 'eq',
           left: { type: 'property', name: 'age' },
@@ -34,17 +35,37 @@ describe('test/rest-query.test.js', () => {
       });
   });
 
+  it('parse correct', () => {
+    const query = new Query({
+      expand: 'owners,task.logs',
+    });
+
+    const { expand } = query;
+    assert.deepEqual(expand, [ 'owners', 'task.logs' ]);
+  });
+
+  it('parse default correct', () => {
+    const query = new Query({
+    });
+
+    const { expand, fields } = query;
+    assert.deepEqual(expand, []);
+    assert.deepEqual(fields, []);
+  });
+
   it('mongo', () => {
     const query = new Query({
       filter: "productName eq basement and createdAt gt datetimeoffset'2017-03-28T16:40:09.724Z' and startswith(name, 'base')",
       fields: 'a,b',
       sort: 'b,-a',
+      expand: 'owner',
     });
 
-    const { mongoFilter, mongoFields, mongoSort } = query;
+    const { mongoFilter, mongoFields, mongoSort, mongoInclude } = query;
     assert(Array.isArray(mongoFilter.$and));
     assert(mongoFilter.$and[1].$and.length === 2);
     assert(mongoFields === 'a,b');
     assert(mongoSort === 'b,-a');
+    assert(mongoInclude === 'owner');
   });
 });
